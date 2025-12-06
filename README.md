@@ -48,7 +48,7 @@ notes-app/
 
 ```bash
 # Clone the project
-git clone https://github.com/<your-username>/notes-app.git
+git clone https://github.com/pedram-mirkarimi/notes-app.git
 
 # Navigate into project directory
 cd notes-app
@@ -101,9 +101,3 @@ Endpoints may include:
 ## 👨‍💻 Author
 
 Developed by **Pedram Mirkarimi**
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
