@@ -48,7 +48,7 @@ notes-app/
 
 ```bash
 # Clone the project
-git clone https://github.com/pedram-mirkarimi/notes-app.git
+git clone https://github.com/Pedram-Mirkarimi/notes-app.git
 
 # Navigate into project directory
 cd notes-app
