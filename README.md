@@ -1,4 +1,4 @@
-# 📝 Notes App CLI
+# 📝 Notes App (Node.js CLI)
 
 A simple and efficient command-line interface (CLI) application for managing your notes directly from the terminal. Built with **Node.js**, this tool leverages the **Yargs** library for powerful command parsing and **Chalk** for a colorful, user-friendly experience.
 
