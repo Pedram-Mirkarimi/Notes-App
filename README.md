@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🗒️ Notes App (CLI)
+# 🗒️ NoteCLI — Command-Line Notes Manager
 
 A simple and clean **command-line notes manager** built with **Node.js**.  
 Create, list, read, and remove notes — stored locally in a JSON file.
