@@ -1,4 +1,3 @@
-````md
 # Notes App (CLI) — اپ یادداشت (خط فرمان) — Notizen-App (CLI)
 
 > **Language / زبان / Sprache:**  
@@ -435,4 +434,3 @@ Für ein „portfolio-ready“ Projekt empfiehlt sich z. B. eine **MIT-Lizenz** 
 GitHub: [https://github.com/Pedram-Mirkarimi](https://github.com/Pedram-Mirkarimi)
 
 </details>
-```
