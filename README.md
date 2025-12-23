@@ -1,436 +1,145 @@
-# Notes App (CLI) — اپ یادداشت (خط فرمان) — Notizen-App (CLI)
+<h1 align="center">🗒️ Notes App (CLI)</h1>
 
-> **Language / زبان / Sprache:**  
-> این README سه‌زبانه است. از بخش‌های زیر (جمع‌شونده) زبان مورد نظرت را باز کن.  
-> This README is trilingual. Open the collapsible section for your preferred language.  
-> Dieses README ist dreisprachig. Öffne den einklappbaren Abschnitt für deine Sprache.
+<p align="center">
+  A lightweight command-line notes manager built with <b>Node.js</b> — powered by <b>Yargs</b> and styled with <b>Chalk</b>.
+</p>
 
----
-
-<details open>
-<summary><strong>🇮🇷 فارسی</strong></summary>
-
-## معرفی پروژه
-**Notes App** یک برنامه‌ی مدیریت یادداشت **در خط فرمان (CLI)** است که با **Node.js** ساخته شده و به شما اجازه می‌دهد داخل ترمینال، یادداشت‌ها را **ایجاد، مشاهده، لیست و حذف** کنید.  
-ذخیره‌سازی اطلاعات به‌صورت **فایل JSON محلی** انجام می‌شود (سبک، ساده، قابل حمل و مناسب برای نمایش مهارت‌های پایه تا متوسط در ساخت CLI).
+<p align="center">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-CLI-informational" />
+  <img alt="Language" src="https://img.shields.io/badge/Language-JavaScript-yellow" />
+  <img alt="Storage" src="https://img.shields.io/badge/Storage-notes.json-blue" />
+  <img alt="Interface" src="https://img.shields.io/badge/Interface-Terminal-lightgrey" />
+</p>
 
 ---
 
-## ویژگی‌ها
-- افزودن یادداشت با **عنوان** و **متن**
-- حذف یادداشت با عنوان
-- لیست کردن همه‌ی یادداشت‌ها
-- خواندن/نمایش یک یادداشت با عنوان
-- ذخیره‌سازی پایدار در فایل محلی `notes.json`
-- جلوگیری از ثبت یادداشت تکراری (عنوان تکراری)
+## 📌 Table of Contents
+- [✨ Features](#-features)
+- [🧰 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🚀 Getting Started](#-getting-started)
+- [⚙️ Usage](#️-usage)
+  - [Commands](#commands)
+  - [Options](#options)
+- [🗃️ Data Storage](#️-data-storage)
+- [🛣️ Roadmap](#️-roadmap)
+- [🤝 Contributing](#-contributing)
+- [👤 Author](#-author)
+- [📜 License](#-license)
 
 ---
 
-## تکنولوژی‌ها
-- **Node.js**
-- **Yargs** برای ساخت و مدیریت دستورات CLI
-- **Chalk** برای خروجی رنگی و خواناتر در ترمینال
-- **JSON File Storage** برای ذخیره‌سازی داده‌ها
+## ✨ Features
+- ➕ **Create Notes** — add a new note with a **unique** title and a body
+- 🗑️ **Delete Notes** — remove notes by title
+- 📋 **List Notes** — get a quick overview of saved notes
+- 📖 **Read a Note** — view the full content of a note by title
+- 💾 **Data Persistence** — stored locally in `notes.json`
+- 🛡️ **Duplicate Prevention** — blocks duplicate note titles
 
 ---
 
-## ساختار پروژه
-```text
-Notes-App/
-├─ app.js          # نقطه‌ی ورود CLI (تعریف دستورات و پارامترها)
-├─ notes.js        # منطق برنامه (CRUD + خواندن/نوشتن فایل)
-├─ notes.json      # دیتای محلی (خودکار بروزرسانی می‌شود)
-├─ package.json
-└─ package-lock.json
+## 🧰 Tech Stack
+| Category | Technology | Purpose |
+|---|---|---|
+| Runtime | Node.js | Run the app in the terminal |
+| CLI Framework | Yargs | Parse commands & flags |
+| Terminal Styling | Chalk | Colorful, readable output |
+| Storage | JSON file (`notes.json`) | Simple persistence between runs |
+
+---
+
+## 📁 Project Structure
+| File | Description |
+|---|---|
+| `app.js` | CLI entry point: command definitions & arguments |
+| `notes.js` | Notes logic (create/read/list/remove + persistence) |
+| `notes.json` | Local data store (auto-updated) |
+| `package.json` | Dependencies & project metadata |
+| `package-lock.json` | Locked dependency tree |
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+- Node.js installed on your machine
+
+### 📥 Installation
+```bash
+git clone https://github.com/Pedram-Mirkarimi/Notes-App.git
+cd Notes-App
+npm install
 ````
 
 ---
 
-## شروع سریع
+## ⚙️ Usage
 
-### پیش‌نیاز
-
-* نصب بودن **Node.js**
-
-### نصب
-
-```bash
-git clone https://github.com/Pedram-Mirkarimi/Notes-App.git
-cd Notes-App
-npm install
-```
-
----
-
-## نحوه استفاده
-
-فرمت کلی:
+Run the CLI using:
 
 ```bash
 node app.js <command> [options]
 ```
 
-### افزودن یادداشت
+### Commands
 
-```bash
-node app.js add --title="Shopping" --body="Buy milk and eggs"
-```
+| Command  | What it does                | Example                                                |
+| -------- | --------------------------- | ------------------------------------------------------ |
+| `add`    | Create and save a new note  | `node app.js add --title="Shopping" --body="Buy milk"` |
+| `remove` | Delete a note by title      | `node app.js remove --title="Shopping"`                |
+| `list`   | List all note titles        | `node app.js list`                                     |
+| `read`   | Show a note’s body by title | `node app.js read --title="Shopping"`                  |
 
-* `--title` (ضروری): عنوان یادداشت (باید یکتا باشد)
-* `--body` (ضروری): متن یادداشت
+### Options
 
-### حذف یادداشت
-
-```bash
-node app.js remove --title="Shopping"
-```
-
-* `--title` (ضروری): عنوان یادداشت برای حذف
-
-### لیست یادداشت‌ها
-
-```bash
-node app.js list
-```
-
-### خواندن یک یادداشت
-
-```bash
-node app.js read --title="Shopping"
-```
-
-* `--title` (ضروری): عنوان یادداشت برای نمایش
+| Command  | Option    | Required | Description                 |
+| -------- | --------- | -------: | --------------------------- |
+| `add`    | `--title` |        ✅ | Note title (must be unique) |
+| `add`    | `--body`  |        ✅ | Note content                |
+| `remove` | `--title` |        ✅ | Title of the note to remove |
+| `read`   | `--title` |        ✅ | Title of the note to read   |
 
 ---
 
-## ذخیره‌سازی داده‌ها
+## 🗃️ Data Storage
 
-یادداشت‌ها در فایل `notes.json` ذخیره می‌شوند. این روش عمداً ساده نگه داشته شده تا ساختار و منطق ساخت CLI در Node.js واضح و قابل بررسی باشد.
+Notes are stored locally in:
 
-> نکته: برای ریست کردن داده‌ها می‌توانی `notes.json` را حذف کنی.
+* `notes.json`
 
----
+This keeps the app fast, simple, and portable — great for demonstrating Node.js CLI patterns.
 
-## پیشنهادهای ارتقا (برای رزومه/پورتفولیو قوی‌تر)
-
-* افزودن دستور **ویرایش** (`update --title --body`)
-* افزودن **جستجو** (`search --query`)
-* افزودن **برچسب‌ها** (`--tags=work,personal`)
-* امکان **خروجی گرفتن/ورودی گرفتن** (Markdown/CSV)
-* اضافه کردن **تست** (Jest) و CI (GitHub Actions)
-* تبدیل پروژه به یک CLI قابل نصب سراسری (`npm i -g` / `npm link`)
+> Tip: Delete `notes.json` if you want to reset your local notes.
 
 ---
 
-## مشارکت
+## 🛣️ Roadmap
 
-پیشنهادها و PRها خوش‌آمدند:
+Want to make it even more portfolio-ready? Here are strong upgrades:
 
-1. Fork
-2. ساخت Branch: `git checkout -b feature/your-feature`
-3. Commit: `git commit -m "Add feature"`
-4. Push: `git push origin feature/your-feature`
-5. Pull Request
-
----
-
-## لایسنس
-
-اگر می‌خواهی پروژه کاملاً پورتفولیو-ریڈی باشد، پیشنهاد می‌شود یک لایسنس مثل **MIT** اضافه کنی و فایل `LICENSE` بسازی.
+* [ ] ✏️ `update` command (edit note body by title)
+* [ ] 🔎 `search` command (find notes by keyword)
+* [ ] 🏷️ Tags support (`--tags=work,personal`)
+* [ ] 📤 Export / Import (Markdown / CSV)
+* [ ] 🧪 Tests (Jest) + GitHub Actions CI
+* [ ] 🌍 Publish as a global CLI package (`npm i -g`)
 
 ---
 
-## نویسنده
+## 🤝 Contributing
 
-**Pedram Mirkarimi**
-GitHub: [https://github.com/Pedram-Mirkarimi](https://github.com/Pedram-Mirkarimi)
-
-</details>
-
----
-
-<details>
-<summary><strong>🇬🇧 English</strong></summary>
-
-## Overview
-
-**Notes App** is a lightweight **command-line notes manager (CLI)** built with **Node.js**.
-It lets you **create, read, list, and remove** notes directly from your terminal. Data is stored locally in a simple **JSON file** for portability and clarity—ideal for showcasing Node.js CLI fundamentals.
-
----
-
-## Features
-
-* Add notes with **title** and **body**
-* Remove notes by title
-* List all notes
-* Read/print a note by title
-* Persistent local storage via `notes.json`
-* Duplicate title prevention
-
----
-
-## Tech Stack
-
-* **Node.js**
-* **Yargs** (command parsing & options)
-* **Chalk** (colorful terminal output)
-* **JSON file storage**
-
----
-
-## Project Structure
-
-```text
-Notes-App/
-├─ app.js          # CLI entry point (commands & options)
-├─ notes.js        # Core logic (CRUD + persistence)
-├─ notes.json      # Local storage (auto-updated)
-├─ package.json
-└─ package-lock.json
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-* **Node.js** installed
-
-### Install
-
-```bash
-git clone https://github.com/Pedram-Mirkarimi/Notes-App.git
-cd Notes-App
-npm install
-```
-
----
-
-## Usage
-
-General format:
-
-```bash
-node app.js <command> [options]
-```
-
-### Add a note
-
-```bash
-node app.js add --title="Shopping" --body="Buy milk and eggs"
-```
-
-* `--title` (required): unique note title
-* `--body` (required): note content
-
-### Remove a note
-
-```bash
-node app.js remove --title="Shopping"
-```
-
-* `--title` (required): note title to remove
-
-### List notes
-
-```bash
-node app.js list
-```
-
-### Read a note
-
-```bash
-node app.js read --title="Shopping"
-```
-
-* `--title` (required): note title to read
-
----
-
-## Data Storage
-
-Notes are stored in `notes.json`. This intentionally simple approach keeps the project easy to understand and review.
-
-> Tip: Delete `notes.json` to reset local data.
-
----
-
-## Portfolio-Ready Improvements (Roadmap)
-
-* Add **update/edit** command (`update --title --body`)
-* Add **search** (`search --query`)
-* Add **tags** (`--tags=work,personal`)
-* Add **export/import** (Markdown/CSV)
-* Add **tests** (Jest) + CI (GitHub Actions)
-* Publish as a global CLI (`npm link` / `npm i -g`)
-
----
-
-## Contributing
+Contributions and suggestions are welcome:
 
 1. Fork the repo
 2. Create a branch: `git checkout -b feature/your-feature`
-3. Commit: `git commit -m "Add feature"`
+3. Commit changes: `git commit -m "Add your feature"`
 4. Push: `git push origin feature/your-feature`
 5. Open a Pull Request
 
 ---
 
-## License
-
-To make it fully portfolio-ready, consider adding an **MIT License** and a `LICENSE` file.
-
----
-
-## Author
+## 👤 Author
 
 **Pedram Mirkarimi**
 GitHub: [https://github.com/Pedram-Mirkarimi](https://github.com/Pedram-Mirkarimi)
-
-</details>
-
----
-
-<details>
-<summary><strong>🇩🇪 Deutsch</strong></summary>
-
-## Übersicht
-
-**Notes App** ist ein schlanker **Kommandozeilen-Notizmanager (CLI)**, erstellt mit **Node.js**.
-Du kannst Notizen direkt im Terminal **anlegen, lesen, auflisten und löschen**. Die Daten werden lokal in einer **JSON-Datei** gespeichert – einfach, nachvollziehbar und ideal, um Node.js-CLI-Kenntnisse zu demonstrieren.
-
----
-
-## Funktionen
-
-* Notizen hinzufügen mit **Titel** und **Text**
-* Notizen nach Titel löschen
-* Alle Notizen auflisten
-* Einzelne Notiz nach Titel anzeigen
-* Persistente Speicherung in `notes.json`
-* Verhindert doppelte Titel
-
----
-
-## Tech-Stack
-
-* **Node.js**
-* **Yargs** (CLI-Kommandos & Optionen)
-* **Chalk** (farbige Terminalausgabe)
-* **JSON-Dateispeicher**
-
----
-
-## Projektstruktur
-
-```text
-Notes-App/
-├─ app.js          # CLI-Einstieg (Kommandos & Optionen)
-├─ notes.js        # Kernlogik (CRUD + Persistenz)
-├─ notes.json      # Lokale Daten (wird automatisch aktualisiert)
-├─ package.json
-└─ package-lock.json
-```
-
----
-
-## Schnellstart
-
-### Voraussetzungen
-
-* **Node.js** installiert
-
-### Installation
-
-```bash
-git clone https://github.com/Pedram-Mirkarimi/Notes-App.git
-cd Notes-App
-npm install
-```
-
----
-
-## Verwendung
-
-Allgemeines Format:
-
-```bash
-node app.js <command> [options]
-```
-
-### Notiz hinzufügen
-
-```bash
-node app.js add --title="Shopping" --body="Buy milk and eggs"
-```
-
-* `--title` (erforderlich): eindeutiger Titel
-* `--body` (erforderlich): Inhalt der Notiz
-
-### Notiz löschen
-
-```bash
-node app.js remove --title="Shopping"
-```
-
-* `--title` (erforderlich): Titel der zu löschenden Notiz
-
-### Notizen auflisten
-
-```bash
-node app.js list
-```
-
-### Notiz lesen
-
-```bash
-node app.js read --title="Shopping"
-```
-
-* `--title` (erforderlich): Titel der Notiz
-
----
-
-## Datenspeicherung
-
-Notizen werden in `notes.json` gespeichert. Dieser bewusst einfache Ansatz macht das Projekt leicht verständlich und gut reviewbar.
-
-> Tipp: `notes.json` löschen, um lokale Daten zurückzusetzen.
-
----
-
-## Verbesserungen fürs Portfolio (Roadmap)
-
-* **Update/Edit**-Kommando (`update --title --body`)
-* **Suche** (`search --query`)
-* **Tags** (`--tags=work,personal`)
-* **Export/Import** (Markdown/CSV)
-* **Tests** (Jest) + CI (GitHub Actions)
-* Als globales CLI veröffentlichen (`npm link` / `npm i -g`)
-
----
-
-## Mitmachen (Contributing)
-
-1. Fork erstellen
-2. Branch anlegen: `git checkout -b feature/your-feature`
-3. Commit: `git commit -m "Add feature"`
-4. Push: `git push origin feature/your-feature`
-5. Pull Request öffnen
-
----
-
-## Lizenz
-
-Für ein „portfolio-ready“ Projekt empfiehlt sich z. B. eine **MIT-Lizenz** plus `LICENSE`-Datei.
-
----
-
-## Autor
-
-**Pedram Mirkarimi**
-GitHub: [https://github.com/Pedram-Mirkarimi](https://github.com/Pedram-Mirkarimi)
-
-</details>
