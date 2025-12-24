@@ -54,7 +54,7 @@ Create, list, read, and remove notes — stored locally in a JSON file.
 ## 📁 Project Structure
 
 ```txt
-Notes-App-main/
+notecli/
 ├─ app.js
 ├─ notes.js
 ├─ notes.json
