@@ -1,7 +1,7 @@
 # notecli — CLI Notes (Learning Project)
 
 > **Learning / practice project (Lern-/Übungsprojekt).**  
-> Built to practice Node.js fundamentals for my **FIAE Ausbildung application (start: from 08/2026)**.
+> Built to practice Node.js fundamentals for my **FIAE Ausbildung application (start: ab 08/2026)**.
 
 A small command-line notes manager. You can add, list, read, and remove notes stored locally.
 
@@ -21,7 +21,7 @@ node app.js add --title="Shopping" --body="Buy milk"
 node app.js list
 node app.js read --title="Shopping"
 node app.js remove --title="Shopping"
-````
+```
 
 </details>
 
