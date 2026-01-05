@@ -1,6 +1,8 @@
 const fs = require('fs');
+const path = require('path');
 const chalk = require('chalk');
-const { title } = require('process');
+
+const NOTES_FILE = path.join(__dirname, 'notes.json');
 
 const addNote = (title, body) => {
   const notes = loadNotes();
@@ -53,12 +55,12 @@ const readNote = (title) => {
 
 const saveNotes = (notes) => {
   const dataJSON = JSON.stringify(notes);
-  fs.writeFileSync('notes.json', dataJSON);
+  fs.writeFileSync(NOTES_FILE, dataJSON);
 };
 
 const loadNotes = () => {
   try {
-    const dataBuffer = fs.readFileSync('notes.json');
+    const dataBuffer = fs.readFileSync(NOTES_FILE);
     const dataJSON = dataBuffer.toString();
     return JSON.parse(dataJSON);
   } catch (e) {
