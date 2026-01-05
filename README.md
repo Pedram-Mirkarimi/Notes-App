@@ -1,49 +1,126 @@
-# notecli — CLI Notes (Learning Project)
+<div align="center">
 
-> **Learning / practice project (Lern-/Übungsprojekt).**  
-> Built to practice Node.js fundamentals for my **FIAE Ausbildung application (start: ab 08/2026)**.
+# 🗒️ NoteCLI — Command-Line Notes Manager
 
-A small command-line notes manager. You can add, list, read, and remove notes stored locally.
+A simple and clean **command-line notes manager** built with **Node.js**.  
+Create, list, read, and remove notes — stored locally in a JSON file.
 
----
+<br/>
 
-## ✅ Core features
-- Add notes (title + body)
-- List saved notes
-- Read a note by title
-- Remove a note by title
+![Node.js](https://img.shields.io/badge/Node.js-CLI-339933?logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6-F7DF1E?logo=javascript&logoColor=000)
+![Yargs](https://img.shields.io/badge/Yargs-CLI%20Parser-6b7280)
+![Chalk](https://img.shields.io/badge/Chalk-Terminal%20Colors-6b7280)
+![Storage](https://img.shields.io/badge/Storage-notes.json-blue)
 
-<details>
-<summary><b>Commands</b></summary>
-
-```bash
-node app.js add --title="Shopping" --body="Buy milk"
-node app.js list
-node app.js read --title="Shopping"
-node app.js remove --title="Shopping"
-```
-
-</details>
+</div>
 
 ---
 
-## 🧰 Tech (learning focus)
-
-* Node.js
-* yargs (CLI)
-* Local JSON storage
+## 📌 Table of Contents
+- [✨ Features](#-features)
+- [🧰 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🚀 Getting Started](#-getting-started)
+- [⚙️ Commands](#️-commands)
+- [🗃️ Data Storage](#️-data-storage)
+- [👤 Author](#-author)
 
 ---
 
-## ▶️ Quick start
+## ✨ Features
+- ➕ Add notes with **title** + **body**
+- 📋 List all saved notes
+- 📖 Read a note by title
+- 🗑️ Remove a note by title
+- 🛡️ Prevent duplicate titles
+- 💾 Local persistence via `notes.json`
+
+---
+
+## 🧰 Tech Stack
+
+| Category | Technology |
+|---|---|
+| Runtime | Node.js |
+| CLI | yargs |
+| Terminal UI | chalk |
+| Storage | JSON file (`notes.json`) |
+
+> Note: If you don't use `validator` in your code, feel free to remove it from `package.json`.
+
+---
+
+## 📁 Project Structure
+
+```txt
+notecli/
+├─ app.js
+├─ notes.js
+├─ notes.json
+└─ package.json
+````
+
+---
+
+## 🚀 Getting Started
+
+### ✅ Prerequisites
+
+* Node.js installed
+
+### 📥 Install
 
 ```bash
 npm install
-node app.js list
+```
+
+### ▶️ Run
+
+Run directly:
+
+```bash
+node app.js <command> [options]
+```
+
+Or use the configured start script:
+
+```bash
+npm start
 ```
 
 ---
 
-## Notes
+## ⚙️ Commands
 
-This repository is a **learning project**, not a production-ready tool.
+| Command  | Description    | Example                                                |
+| -------- | -------------- | ------------------------------------------------------ |
+| `add`    | Add a new note | `node app.js add --title="Shopping" --body="Buy milk"` |
+| `remove` | Remove a note  | `node app.js remove --title="Shopping"`                |
+| `list`   | List all notes | `node app.js list`                                     |
+| `read`   | Read a note    | `node app.js read --title="Shopping"`                  |
+
+### Options
+
+| Command  | Option    | Required | Description     |
+| -------- | --------- | :------: | --------------- |
+| `add`    | `--title` |     ✅    | Note title      |
+| `add`    | `--body`  |     ✅    | Note body       |
+| `remove` | `--title` |     ✅    | Title to remove |
+| `read`   | `--title` |     ✅    | Title to read   |
+
+---
+
+## 🗃️ Data Storage
+
+Notes are stored in `notes.json`.
+
+* If you want to reset, you can delete `notes.json` (optional).
+* For best practice, you may want to keep `notes.json` out of git (add it to `.gitignore`) and optionally provide a `notes.example.json`.
+
+---
+
+## 👤 Author
+
+**S. AmirMohammad Mirkarimi**
+GitHub: [S-AmirMohammad-Mirkarimi](https://github.com/S-AmirMohammad-Mirkarimi)
