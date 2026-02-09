@@ -47,8 +47,6 @@ Create, list, read, and remove notes — stored locally in a JSON file.
 | Terminal UI | chalk |
 | Storage | JSON file (`notes.json`) |
 
-> Note: If you don't use `validator` in your code, feel free to remove it from `package.json`.
-
 ---
 
 ## 📁 Project Structure
