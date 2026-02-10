@@ -2,8 +2,9 @@
 
 # 🗒️ NoteCLI — Command-Line Notes Manager
 
-A simple and clean **command-line notes manager** built with **Node.js**.  
-Create, list, read, and remove notes — stored locally in a JSON file.
+A simple and clean **Node.js command-line notes manager**.  
+**Learning project** focused on CLI design (commands via **yargs**) and local persistence using a JSON file.  
+Create, list, read, and remove notes, with an emphasis on modular structure and clear documentation.
 
 <br/>
 
@@ -25,6 +26,13 @@ Create, list, read, and remove notes — stored locally in a JSON file.
 - [⚙️ Commands](#️-commands)
 - [🗃️ Data Storage](#️-data-storage)
 - [👤 Author](#-author)
+
+---
+
+## What I practiced
+- Command parsing and CLI UX (yargs)
+- File-based persistence using JSON
+- Modular code structure and clear documentation
 
 ---
 
